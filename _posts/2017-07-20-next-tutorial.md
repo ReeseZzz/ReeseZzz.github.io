@@ -1,41 +1,60 @@
 ---
-title: Next Theme Tutorial
-description: NexT is a high quality elegant Jekyll theme ported from Hexo Next. It is crafted from scratch, with love.
+title: Jekyll + GitHub Pages搭建个人博客
+description: 使用 Jekyll + GitHub Pages 快速搭建个人博客 .
 categories:
- - tutorial
+ -
 tags:
 ---
 
-> NexT is a high quality elegant [Jekyll](https://jekyllrb.com) theme ported from [Hexo Next](https://github.com/iissnan/hexo-theme-next). It is crafted from scratch, with love.
+> 使用 [Jekyll](https://jekyllrb.com) + GitHub Pages 快速搭建个人博客.
 
-<!-- more -->
+## 关于 Jekyll
 
-[Live Preview](http://simpleyyt.github.io/jekyll-theme-next/)
-
-## Screenshots
-
-* Desktop
-![Desktop Preview](http://iissnan.com/nexus/next/desktop-preview.png)
-
-* Sidebar
-
-![Desktop Sidebar Preview](http://iissnan.com/nexus/next/desktop-sidebar-preview.png)
-
-* Sidebar (Post details page)
-
-![Desktop Sidebar Preview](http://iissnan.com/nexus/next/desktop-sidebar-toc.png)
-
-* Mobile
-
-![Mobile Preview](http://iissnan.com/nexus/next/mobile.png)
+Jekyll 是一个免费的生成静态网页的工具，不需要数据库支持。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，可以配合第三方服务例如： Disqus（评论）、多说(评论) 以及分享 等等扩展功能，Jekyll 可以直接部署在 Github（国外） 或 Coding（国内） 上，可以绑定自己的域名。[Jekyll中文文档](https://www.jekyll.com.cn/)、[Jekyll主题列表](http://jekyllthemes.org/)。
 
 
-## Installation
+## 安装
+jekyll本身基于Ruby开发，因此，想要在本地构建一个测试环境需要具有Ruby的开发和运行环境。
+### 安装Ruby
+在windows下，可以使用[Rubyinstaller](https://rubyinstaller.org/downloads/)安装以及对应Ruby的Development Kits。
+这里我选择了64位2.3.3版本以及64位的DevKit
 
-Check whether you have `Ruby 2.1.0` or higher installed:
+![Alt Ruby](http://opd3dg87b.bkt.clouddn.com/1519882657%281%29.jpg)
 
+运行Rubyinstaller下载包并将Ruby添加系统环境变量,查看ruby版本
 ```sh
-ruby --version
+ruby -v
+ruby 2.3.3p222 (2016-11-21 revision 56859) [x64-mingw32]
+```
+运行Devkit下载包,运行:
+```sh
+ruby dk.rb init
+```
+该目录下会生成config.yml文件,将Ruby安装目录添加至文件最后一行
+```yml
+# Example:
+#
+# ---
+# - C:/ruby19trunk
+# - C:/ruby192dev
+#
+---
+- C:/Ruby23-x64
+```
+
+然后执行下面命令,查看路径是否正确
+```sh
+ruby dk.rb review
+```
+
+最后再输入
+```sh
+ruby dk.rb install
+```
+
+### 安装Jekyll
+```sh
+gem install jekyll
 ```
 
 Install `Bundler`:
@@ -44,134 +63,29 @@ Install `Bundler`:
 gem install bundler
 ```
 
-Clone Jacman theme:
+选择一个主题模板:
 
 ```sh
 git clone https://github.com/Simpleyyt/jekyll-theme-next.git
 cd jekyll-theme-next
 ```
 
-Install Jekyll and other dependencies from the GitHub Pages gem:
+根据当前目录下的Gemfile，安装所需要的所有依赖:
 
 ```sh
 bundle install
 ```
 
-Run your Jekyll site locally:
+启动Jekyll:
 
 ```sh
 bundle exec jekyll server
 ```
+在浏览器地址栏中输入[http://127.0.0.1:4000/](http://127.0.0.1:4000/)，即可查看博客
+![Alt localhost](http://opd3dg87b.bkt.clouddn.com/1519884414%281%29.png)
 
-More Details：[Setting up your GitHub Pages site locally with Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
-
-
-## Features
-
-### Multiple languages support, including: English / Russian / French / German / Simplified Chinese / Traditional Chinese.
-
-Default language is English.
-
-```yml
-language: en
-# language: zh-Hans
-# language: fr-FR
-# language: zh-hk
-# language: zh-tw
-# language: ru
-# language: de
-```
-
-Set `language` field as following in site `_config.yml` to change to Chinese.
-
-```yml
-language: zh-Hans
-```
-
-### Comment support.
-
-NexT has native support for `DuoShuo` and `Disqus` comment systems.
-
-Add the following snippets to your `_config.yml`:
-
-```yml
-duoshuo:
-  enable: true
-  shortname: your-duoshuo-shortname
-```
-
-OR
-
-```yml
-disqus_shortname: your-disqus-shortname
-```
-
-### Social Media
-
-NexT can automatically add links to your Social Media accounts:
-
-```yml
-social:
-  GitHub: your-github-url
-  Twitter: your-twitter-url
-  Weibo: your-weibo-url
-  DouBan: your-douban-url
-  ZhiHu: your-zhihu-url
-```
-
-### Feed link.
-
-> Show a feed link.
-
-Set `rss` field in theme's `_config.yml`, as the following value:
-
-1. `rss: false` will totally disable feed link.
-2. `rss:  ` use sites' feed link. This is the default option.
-
-    Follow the installation instruction in the plugin's README. After the configuration is done for this plugin, the feed link is ready too.
-
-3. `rss: http://your-feed-url` set specific feed link.
-
-### Up to 5 code highlight themes built-in.
-
-NexT uses [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) with 5 themes for you to choose from.
-Next use `normal` by default. Have a preview about `normal` and `night`:
-
-![Tomorrow Normal Preview](http://iissnan.com/nexus/next/tomorrow-normal.png)
-![Tomorrow Night Preview](http://iissnan.com/nexus/next/tomorrow-night.png)
-
-Head over to [Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) for more details.
-
-## Configuration
-
-NexT comes with few configurations.
-
-```yml
-
-# Menu configuration.
-menu:
-  home: /
-  archives: /archives
-
-# Favicon
-favicon: /favicon.ico
-
-# Avatar (put the image into next/source/images/)
-# can be any image format supported by web browsers (JPEG,PNG,GIF,SVG,..)
-avatar: /default_avatar.png
-
-# Code highlight theme
-# available: normal | night | night eighties | night blue | night bright
-highlight_theme: normal
-
-# Fancybox for image gallery
-fancybox: true
-
-# Specify the date when the site was setup
-since: 2013
-
-```
-
-## Browser support
-
-![Browser support](http://iissnan.com/nexus/next/browser-support.png)
+## 部署到GitHub
+1）在自己的GitHub上创建一个仓库如:`用户名.github.io`。   
+2）把此仓库克隆到本地，然后把刚才创建的文件夹中全部文件复制到仓库中，然后同步到GitHub网站上去。   
+3）到GitHub网站，选择刚创建好的博客仓库，选择Setting→GitHub Page开启网站服务。   
+4）在浏览器地址栏输入你的仓库名，即可访问你的博客。   
